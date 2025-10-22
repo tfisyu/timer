@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-const Timerrrr = () => {
+const Sprint = () => {
 	const [inputTime, setInputTime] = useState('');
+	const [count, setCount] = useState(0);
 	const [countdownStarted, setCountdownStarted] = useState(false);
 	const [timeRemaining, setTimeRemaining] = useState(0);
 
@@ -19,7 +20,6 @@ const Timerrrr = () => {
 					0,
 					0
 				);
-				debugger;
 
 				if (eventTime.getTime() < now.getTime()) {
 					eventTime.setDate(eventTime.getDate() + 1);
@@ -27,11 +27,11 @@ const Timerrrr = () => {
 
 				let remainingTime = eventTime.getTime() - now.getTime();
 
-				if (remainingTime <= 0) {
+				/* 				if (remainingTime <= 0) {
 					remainingTime = 0;
 					clearInterval(countdownInterval);
 					alert('aaaaaaaeeeeeeeeeee');
-				}
+				} */
 				setTimeRemaining(remainingTime);
 			}, 1000);
 
@@ -70,6 +70,10 @@ const Timerrrr = () => {
 				<div className='countdown-value'>
 					{seconds.toString().padStart(2, '0')} <span>segundos</span>
 				</div>
+				<div>
+					<h2>vagas que faltam: {count}</h2>
+					<button onClick={(e) => setCount((e) => e - 1)}>-</button>
+				</div>
 			</div>
 		);
 	};
@@ -84,6 +88,11 @@ const Timerrrr = () => {
 						value={inputTime}
 						onChange={(e) => setInputTime(e.target.value)}
 						onClick={(e) => (e.target.type = 'time')}
+					/>
+					<input
+						type='text'
+						name='vagas-picker'
+						onChange={(e) => setCount(e.target.value)}
 					/>
 					<button onClick={handleSetCountdown}>começar</button>
 				</form>
@@ -100,4 +109,4 @@ const Timerrrr = () => {
 	);
 };
 
-export default Timerrrr;
+export default Sprint;

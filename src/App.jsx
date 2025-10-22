@@ -1,10 +1,10 @@
 import React from 'react';
-import Lets from './components/blegh';
+import Sprint from './components/blegh';
 
 function App() {
 	return (
 		<div className='App'>
-			<Lets />
+			<Sprint />
 		</div>
 	);
 }
